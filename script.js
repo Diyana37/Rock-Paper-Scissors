@@ -1,5 +1,3 @@
-console.log("Hello Stefkooo");
-
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
@@ -16,60 +14,101 @@ function randomComputerChoice() {
   }
 }
 
-function readHumanChoice() {
-  let humanChoice = prompt("What's your choice?");
+let humanChoice = "";
+let computerChoice = "";
 
-  while (humanChoice !== "Rock" && humanChoice !== "Paper" && humanChoice !== "Scissors") {
-    humanChoice = prompt("What's your choice?");
-  }
-  return humanChoice;
+function readHumanData() {
+  const rockButton = document.querySelector(".rock-button");
+  rockButton.addEventListener("click", function (e) {
+    humanChoice = "Rock";
+    computerChoice = randomComputerChoice();
+
+    singleRound(humanChoice, computerChoice);
+  });
+
+  const paperButton = document.querySelector(".paper-button");
+  paperButton.addEventListener("click", function (e) {
+    humanChoice = "Paper";
+    computerChoice = randomComputerChoice();
+
+    singleRound(humanChoice, computerChoice);
+  });
+
+  const scissorsButton = document.querySelector(".scissors-button");
+  scissorsButton.addEventListener("click", function (e) {
+    humanChoice = "Scissors";
+    computerChoice = randomComputerChoice();
+
+    singleRound(humanChoice, computerChoice);
+  });
 }
 
 let computerPoints = 0;
 let humanPoints = 0;
-function singleRound() {
-  let computerChoice = randomComputerChoice();
-  let humanChoice = readHumanChoice();
 
+function singleRound(humanChoice, computerChoice) {
   if (computerChoice === "Rock") {
     if (humanChoice === "Scissors") {
       computerPoints++;
-      console.log("Computer wins this round!");
+      printCurrentScore("Computer wins this round!");
     } else if (humanChoice === "Paper") {
       humanPoints++;
-      console.log("Human wins this round!");
+      printCurrentScore("Human wins this round!");
+    } else {
+      printCurrentScore("Tie!");
     }
   } else if (computerChoice === "Scissors") {
     if (humanChoice === "Rock") {
       humanPoints++;
-      console.log("Human wins this round!");
+      printCurrentScore("Human wins this round!");
     } else if (humanChoice === "Paper") {
       computerPoints++;
-      console.log("Computer wins this round!");
+      printCurrentScore("Computer wins this round!");
+    } else {
+      printCurrentScore("Tie!");
     }
   } else {
     if (humanChoice === "Rock") {
       computerPoints++;
-      console.log("Computer wins this round!");
+      printCurrentScore("Computer wins this round!");
     } else if (humanChoice === "Scissors") {
       humanPoints++;
-      console.log("Human wins this round!");
+      printCurrentScore("Human wins this round!");
+    } else {
+      printCurrentScore("Tie!");
     }
   }
+  
+  resetGame();
 }
 
-function playGame() {
-  for (let i = 0; i < 5; i++) {
-    singleRound();
-  }
+readHumanData();
 
-  if (computerPoints < humanPoints) {
-    console.log(`Human wins! ${humanPoints}-${computerPoints}`);
-  } else if (computerPoints > humanPoints) {
-    console.log(`Computer wins! ${humanPoints}-${computerPoints}`);
-  } else {
-    console.log(`Tie! No one wins. ${humanPoints}-${computerPoints}`);
-  }
+function printCurrentScore(message) {
+  let text = document.querySelector(".current-text");
+  text.textContent = message;
+
+  let humanP = document.querySelector(".human-score-label");
+  humanP.textContent = `Human points: ${humanPoints}`;
+
+  let computerP = document.querySelector(".computer-score-label");
+  computerP.textContent = `Computer points: ${computerPoints}`;
 }
 
-playGame();
+function resetGame() {
+  if (humanPoints === 5) {
+    let text = document.querySelector(".current-text");
+    text.textContent = `Human wins! ${humanPoints}-${computerPoints}`;
+    humanPoints = 0;
+    computerPoints = 0;
+    return;
+  }
+
+  if (computerPoints === 5) {
+    let text = document.querySelector(".current-text");
+    text.textContent = `Computer wins! ${computerPoints}-${humanPoints}`;
+    humanPoints = 0;
+    computerPoints = 0;
+    return;
+  }
+};
