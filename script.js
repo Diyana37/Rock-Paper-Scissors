@@ -89,10 +89,18 @@ function printCurrentScore(message) {
   text.textContent = message;
 
   let humanP = document.querySelector(".human-score-label");
-  humanP.textContent = `Human points: ${humanPoints}`;
+  const humanSpan = document.createElement("span");
+  humanSpan.classList.add("fw-bold");
+  humanSpan.textContent = `${humanPoints}`;
+  humanP.textContent = `Human points: `;
+  humanP.appendChild(humanSpan);
 
   let computerP = document.querySelector(".computer-score-label");
-  computerP.textContent = `Computer points: ${computerPoints}`;
+  const computerSpan = document.createElement("span");
+  computerSpan.classList.add("fw-bold");
+  computerSpan.textContent = `${computerPoints}`;
+  computerP.textContent = `Computer points: `;
+  computerP.appendChild(computerSpan);
 }
 
 function resetGame() {

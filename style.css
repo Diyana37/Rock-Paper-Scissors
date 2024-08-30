@@ -2,7 +2,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    column-gap: 30px;
+    column-gap: 40px;
     border: none;
     margin-top: 100px;
+}
+
+.rock-button, .paper-button, .scissors-button {
+    border-radius: 50%;
+    background-color: #FED71B;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.human-score-label, .computer-score-label {
+    margin-bottom: 0;
+    margin-right: 10px;
+}
+
+.human-score-label {
+    margin-top: 20px;
 }
