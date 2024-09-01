@@ -47,35 +47,37 @@ let computerPoints = 0;
 let humanPoints = 0;
 
 function singleRound(humanChoice, computerChoice) {
+  printCurrentChoice();
+
   if (computerChoice === "Rock") {
     if (humanChoice === "Scissors") {
       computerPoints++;
-      printCurrentScore("Computer wins this round!");
+      printCurrentScore("YOU LOSE!", "background-lose", "text-danger");
     } else if (humanChoice === "Paper") {
       humanPoints++;
-      printCurrentScore("Human wins this round!");
+      printCurrentScore("YOU WIN!", "background-win", "text-success");
     } else {
-      printCurrentScore("Tie!");
+      printCurrentScore("TIE!", "background-tie", "text-info");
     }
   } else if (computerChoice === "Scissors") {
     if (humanChoice === "Rock") {
       humanPoints++;
-      printCurrentScore("Human wins this round!");
+      printCurrentScore("YOU WIN!", "background-win", "text-success");
     } else if (humanChoice === "Paper") {
       computerPoints++;
-      printCurrentScore("Computer wins this round!");
+      printCurrentScore("YOU LOSE!", "background-lose", "text-danger");
     } else {
-      printCurrentScore("Tie!");
+      printCurrentScore("TIE!", "background-tie", "text-info");
     }
   } else {
     if (humanChoice === "Rock") {
       computerPoints++;
-      printCurrentScore("Computer wins this round!");
+      printCurrentScore("YOU LOSE!", "background-lose", "text-danger");
     } else if (humanChoice === "Scissors") {
       humanPoints++;
-      printCurrentScore("Human wins this round!");
+      printCurrentScore("YOU WIN!", "background-win", "text-success");
     } else {
-      printCurrentScore("Tie!");
+      printCurrentScore("TIE!", "background-tie", "text-info");
     }
   }
   
@@ -84,23 +86,39 @@ function singleRound(humanChoice, computerChoice) {
 
 readHumanData();
 
-function printCurrentScore(message) {
+function printCurrentScore(message, containerClassName, textClassName) {
+  let container = document.querySelector(".current-text-container");
+  let containerClasses = ["background-lose", "background-win", "background-tie"];
+  let textClasses = ["text-danger", "text-success", "text-info"];
+
+  cleanUpClassNames(container, containerClasses);
+  container.classList.add(containerClassName);
+
   let text = document.querySelector(".current-text");
+  cleanUpClassNames(text, textClasses);
+  text.classList.add(textClassName);
   text.textContent = message;
 
-  let humanP = document.querySelector(".human-score-label");
-  const humanSpan = document.createElement("span");
-  humanSpan.classList.add("fw-bold");
+  let humanSpan = document.querySelector(".initial-score-human");
   humanSpan.textContent = `${humanPoints}`;
-  humanP.textContent = `Human points: `;
-  humanP.appendChild(humanSpan);
 
-  let computerP = document.querySelector(".computer-score-label");
-  const computerSpan = document.createElement("span");
-  computerSpan.classList.add("fw-bold");
+  let computerSpan = document.querySelector(".initial-score-computer");
   computerSpan.textContent = `${computerPoints}`;
-  computerP.textContent = `Computer points: `;
-  computerP.appendChild(computerSpan);
+}
+
+function printCurrentChoice() {
+  let currentHumanChoice = document.querySelector(".current-human-choice");
+  currentHumanChoice.textContent = humanChoice.toUpperCase();
+
+  let currentComputerChoice = document.querySelector(".current-computer-choice");
+  currentComputerChoice.textContent = computerChoice.toUpperCase();
+}
+
+function cleanUpClassNames(container, classArray) {
+  for (let i = 0; i < classArray.length; i++) {
+    const element = classArray[i];
+    container.classList.remove(element);
+  }
 }
 
 function resetGame() {

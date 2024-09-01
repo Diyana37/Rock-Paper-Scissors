@@ -12,33 +12,48 @@
       crossorigin="anonymous"
     />
   </head>
-  <body>
-    <p class="human-score-label text-end">Human score:</p>
-    <p class="computer-score-label text-end">Computer score:</p>
-
-    <div class="button-container">
-      <div class="rock-button">
-        <img
-          src="./assets/Microsoft-Fluentui-Emoji-Flat-Rock-Flat.512.png"
-          alt="Rock"
-          width="80"
-          height="80"
-        />
+  <body class="body">
+    <div class="game-container shadow-lg">
+      <p class="human-score-label text-end">
+        Human score: <span class="initial-score-human fw-bold">0</span>
+      </p>
+      <p class="computer-score-label text-end">
+        Computer score: <span class="initial-score-computer fw-bold">0</span>
+      </p>
+  
+      <div class="button-container">
+        <div class="rock-button">
+          <img
+            src="./assets/Microsoft-Fluentui-Emoji-Flat-Rock-Flat.512.png"
+            alt="Rock"
+            width="80"
+            height="80"
+          />
+        </div>
+        <div class="paper-button">
+          <img src="./assets/paper.png" alt="Paper" width="80" height="80" />
+        </div>
+        <div class="scissors-button">
+          <img
+            src="./assets/—Pngtree—vector scissor icon_4072403.png"
+            alt="Scissors"
+            width="80"
+            height="80"
+          />
+        </div>
       </div>
-      <div class="paper-button">
-        <img src="./assets/paper.png" alt="Paper" width="80" height="80" />
-      </div>
-      <div class="scissors-button">
-        <img
-          src="./assets/—Pngtree—vector scissor icon_4072403.png"
-          alt="Scissors"
-          width="80"
-          height="80"
-        />
+  
+      <p class="human-choice-label text-center">
+        You choose: <span class="current-human-choice fw-bold">N/A</span>
+      </p>
+      <p class="computer-choice-label text-center">
+        Computer choose: <span class="current-computer-choice fw-bold">N/A</span>
+      </p>
+  
+      <div class="current-text-container">
+        <p class="current-text fw-bold"></p>
       </div>
     </div>
-
-    <p class="current-text"></p>
 
     <script src="script.js"></script>
     <script
