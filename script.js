@@ -80,7 +80,7 @@ function singleRound(humanChoice, computerChoice) {
       printCurrentScore("TIE!", "background-tie", "text-info");
     }
   }
-  
+
   resetGame();
 }
 
@@ -88,7 +88,11 @@ readHumanData();
 
 function printCurrentScore(message, containerClassName, textClassName) {
   let container = document.querySelector(".current-text-container");
-  let containerClasses = ["background-lose", "background-win", "background-tie"];
+  let containerClasses = [
+    "background-lose",
+    "background-win",
+    "background-tie",
+  ];
   let textClasses = ["text-danger", "text-success", "text-info"];
 
   cleanUpClassNames(container, containerClasses);
@@ -110,7 +114,9 @@ function printCurrentChoice() {
   let currentHumanChoice = document.querySelector(".current-human-choice");
   currentHumanChoice.textContent = humanChoice.toUpperCase();
 
-  let currentComputerChoice = document.querySelector(".current-computer-choice");
+  let currentComputerChoice = document.querySelector(
+    ".current-computer-choice"
+  );
   currentComputerChoice.textContent = computerChoice.toUpperCase();
 }
 
@@ -122,9 +128,11 @@ function cleanUpClassNames(container, classArray) {
 }
 
 function resetGame() {
-  let endGameModal = new bootstrap.Modal(document.querySelector('.end-game-modal'));
+  let modal = document.querySelector(".end-game-modal");
+  let endGameModal = new bootstrap.Modal(modal);
 
   const playAgainButton = document.querySelector(".play-again-button");
+  
   playAgainButton.addEventListener("click", function (e) {
     location.reload();
     endGameModal.hide();
@@ -147,10 +155,10 @@ function resetGame() {
 
     let text = document.querySelector(".modal-text");
     text.textContent = `Computer wins! ${computerPoints}-${humanPoints}`;
-    
+
     humanPoints = 0;
     computerPoints = 0;
 
     return;
   }
-};
+}

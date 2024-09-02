@@ -13,21 +13,30 @@
     />
   </head>
   <body class="body">
-  <div class="modal fade end-game-modal">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <h4 class="modal-text fw-bolder"></h4>
-      <div class="modal-header">
-        <h5 class="modal-title end-game-modal">Would you like yo play again?</h5>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-warning play-again-button">Play again</button>
+    <div class="modal fade end-game-modal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <h4 class="modal-text fw-bolder"></h4>
+          <div class="modal-header">
+            <h5 class="modal-title end-game-modal">
+              Would you like to play again?
+            </h5>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary close"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-warning play-again-button">
+              Play again
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
 
     <div class="game-container shadow-lg">
       <p class="human-score-label text-end">
@@ -36,7 +45,7 @@
       <p class="computer-score-label text-end">
         Computer score: <span class="initial-score-computer fw-bold">0</span>
       </p>
-  
+
       <div class="button-container">
         <div class="rock-button">
           <img
@@ -58,14 +67,15 @@
           />
         </div>
       </div>
-  
+
       <p class="human-choice-label text-center">
         You choose: <span class="current-human-choice fw-bold">N/A</span>
       </p>
       <p class="computer-choice-label text-center">
-        Computer choose: <span class="current-computer-choice fw-bold">N/A</span>
+        Computer choose:
+        <span class="current-computer-choice fw-bold">N/A</span>
       </p>
-  
+
       <div class="current-text-container">
         <p class="current-text fw-bold"></p>
       </div>
