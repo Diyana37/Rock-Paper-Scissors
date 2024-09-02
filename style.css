@@ -78,3 +78,10 @@ html {
 .background-tie {
     background-color: #b3e4f7;
 }
+
+.modal-content {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    padding-top: 20px;
+}

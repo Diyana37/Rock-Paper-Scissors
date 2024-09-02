@@ -122,19 +122,35 @@ function cleanUpClassNames(container, classArray) {
 }
 
 function resetGame() {
+  let endGameModal = new bootstrap.Modal(document.querySelector('.end-game-modal'));
+
+  const playAgainButton = document.querySelector(".play-again-button");
+  playAgainButton.addEventListener("click", function (e) {
+    location.reload();
+    endGameModal.hide();
+  });
+
   if (humanPoints === 5) {
-    let text = document.querySelector(".current-text");
+    endGameModal.show();
+
+    let text = document.querySelector(".modal-text");
     text.textContent = `Human wins! ${humanPoints}-${computerPoints}`;
+
     humanPoints = 0;
     computerPoints = 0;
+
     return;
   }
 
   if (computerPoints === 5) {
-    let text = document.querySelector(".current-text");
+    endGameModal.show();
+
+    let text = document.querySelector(".modal-text");
     text.textContent = `Computer wins! ${computerPoints}-${humanPoints}`;
+    
     humanPoints = 0;
     computerPoints = 0;
+
     return;
   }
 };
